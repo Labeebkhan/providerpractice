@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
-import '../provider/tilepro.dart';
-import '../screen/Favourites.dart';
+import 'package:providerpractice/provider/tilepro.dart';
 
-class TilesPro extends StatefulWidget {
-  const TilesPro({super.key});
+class FavouriteItem extends StatefulWidget {
+  const FavouriteItem({super.key});
 
   @override
-  State<TilesPro> createState() => _TilesProState();
+  State<FavouriteItem> createState() => _FavouriteItemState();
 }
 
-class _TilesProState extends State<TilesPro> {
+class _FavouriteItemState extends State<FavouriteItem> {
   @override
   Widget build(BuildContext context) {
-    // final Favlistlis = Provider.of<FavProvider>(context);
-
+    final favouriteprovider = Provider.of<FavProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ListView Provider'),
@@ -36,7 +35,7 @@ class _TilesProState extends State<TilesPro> {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: 30,
+              itemCount: favouriteprovider.FavList.length,
               itemBuilder:
                   (context, index) => Consumer<FavProvider>(
                     builder: (context, value, child) {
