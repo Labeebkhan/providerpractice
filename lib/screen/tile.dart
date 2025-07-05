@@ -29,7 +29,11 @@ class _TilesProState extends State<TilesPro> {
                     builder: (context, value, child) {
                       return ListTile(
                         onTap: () {
-                          value.addFav(index);
+                          if (value.FavList.contains(index)) {
+                            value.remFav(index);
+                          } else {
+                            value.addFav(index);
+                          }
                         },
                         title: Text('Item ' + index.toString()),
                         trailing: Icon(
