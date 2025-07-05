@@ -8,6 +8,8 @@ import 'package:providerpractice/screen/example.dart';
 // import 'package:providerpractice/provider/todopro.dart';
 import 'screen/name.dart';
 import 'provider/name.dart';
+import 'screen/tile.dart';
+import 'provider/tilepro.dart';
 // import 'provider/counter.dart';
 // import 'package:provider/provider.dart';
 // import 'screen/counter.dart';
@@ -26,12 +28,13 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => MyAppState()),
         ChangeNotifierProvider(create: (_) => NameState()),
+        ChangeNotifierProvider(create: (_) => Examplepro()),
         ChangeNotifierProvider(
-          create: (_) => Examplepro(),
+          create: (_) => FavProvider(),
         ), // ExamplePro is the Class name for Provider
         // Add more providers here
       ],
-      child: MaterialApp(debugShowCheckedModeBanner: false, home: Sliders()),
+      child: MaterialApp(debugShowCheckedModeBanner: false, home: TilesPro()),
     );
   }
 }
