@@ -12,6 +12,7 @@ import 'provider/name.dart';
 import 'screen/tile.dart';
 import 'provider/tilepro.dart';
 import 'provider/theme_changer_provider.dart';
+import 'screen/apiproscreen.dart';
 import 'screen/darktheme.dart';
 // import 'provider/counter.dart';
 // import 'package:provider/provider.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
           create: (_) => FavProvider(),
         ), // ExamplePro is the Class name for Provider
         // Add more providers here
+        ChangeNotifierProvider(create: (_) => ()),
         ChangeNotifierProvider(create: (_) => DarkThemeProvider()),
       ],
       child: Builder(
