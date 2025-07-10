@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:providerpractice/provider/apopro.dart';
 import 'package:providerpractice/provider/counter.dart';
 import 'package:providerpractice/provider/theme_changer_provider.dart';
 import 'package:providerpractice/screen/example.dart';
@@ -14,6 +15,7 @@ import 'provider/tilepro.dart';
 import 'provider/theme_changer_provider.dart';
 import 'screen/apiproscreen.dart';
 import 'screen/darktheme.dart';
+import 'screen/apiproscreen.dart';
 // import 'provider/counter.dart';
 // import 'package:provider/provider.dart';
 // import 'screen/counter.dart';
@@ -37,10 +39,11 @@ class MyApp extends StatelessWidget {
           create: (_) => FavProvider(),
         ), // ExamplePro is the Class name for Provider
         // Add more providers here
-        ChangeNotifierProvider(create: (_) => ()),
+        ChangeNotifierProvider(create: (_) => ApiPro()),
         ChangeNotifierProvider(create: (_) => DarkThemeProvider()),
       ],
-      child: Builder(
+      child:
+      Builder(
         builder: (BuildContext context) {
           final themechanger = Provider.of<DarkThemeProvider>(context);
           return MaterialApp(
@@ -50,7 +53,8 @@ class MyApp extends StatelessWidget {
               brightness: Brightness.light,
               primarySwatch: Colors.red,
             ),
-            home: DarkthemeScreen(),
+            home: Apiproscreen(), // Replace with your desired home screen
+            // home: DarkthemeScreen(),
             darkTheme: ThemeData(
               brightness: Brightness.dark,
             ), // Use light theme
