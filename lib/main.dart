@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:providerpractice/provider/counter.dart';
+import 'package:providerpractice/provider/theme_changer_provider.dart';
 import 'package:providerpractice/screen/example.dart';
 import 'package:providerpractice/provider/examplepro.dart';
 import 'package:providerpractice/screen/example.dart';
@@ -10,6 +11,8 @@ import 'screen/name.dart';
 import 'provider/name.dart';
 import 'screen/tile.dart';
 import 'provider/tilepro.dart';
+import 'provider/theme_changer_provider.dart';
+import 'screen/darktheme.dart';
 // import 'provider/counter.dart';
 // import 'package:provider/provider.dart';
 // import 'screen/counter.dart';
@@ -33,8 +36,26 @@ class MyApp extends StatelessWidget {
           create: (_) => FavProvider(),
         ), // ExamplePro is the Class name for Provider
         // Add more providers here
+        ChangeNotifierProvider(create: (_) => DarkThemeProvider()),
       ],
-      child: MaterialApp(debugShowCheckedModeBanner: false, home: TilesPro()),
+      child: Builder(
+        builder: (BuildContext context) {
+          final themechanger = Provider.of<DarkThemeProvider>(context);
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            themeMode: themechanger.themeMode,
+            theme: ThemeData(
+              brightness: Brightness.light,
+              primarySwatch: Colors.red,
+            ),
+            home: DarkthemeScreen(),
+            darkTheme: ThemeData(
+              brightness: Brightness.dark,
+            ), // Use light theme
+            // Use system theme mode
+          );
+        },
+      ),
     );
   }
 }
